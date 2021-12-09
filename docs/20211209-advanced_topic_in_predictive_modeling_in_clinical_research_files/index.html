@@ -134,7 +134,7 @@ class: inverse, middle, center, hide-count
 
 Machine Learning deals with the study, the design and the development of algorithms that give computers the capability to learn without being explicitly programmed
 
-.right[Artur Samuel, 1959]
+.right[Arthur Samuel, 1959]
 
 &lt;img src="img/samuel.png" width="70%" style="display: block; margin: auto;" /&gt;
 
@@ -153,7 +153,7 @@ In machine learning, we provide the .orange[input] (data), the desired result an
 &lt;br&gt;
 &lt;br&gt;
 
-Mathematically, Machine Learning problems are simply .orange[*optimisation*] problems
+Mathematically, Machine Learning problems are simply .orange[*optimization*] problems
 ]
 
 
@@ -180,7 +180,7 @@ A computer program is said to learn from .orange[experience] (**E**) with respec
 
 E.g., Misclassification error (**P**) for diagnoses' classification (**T**) improves (i.e., become lower) after training on additional data (**E**).
 
-E.g., Misclassification error (**P**) for diagnoses' classification (**T**) improves (i.e., become lower) after additional iterations of the training procedure (**E**) on the same dataset.
+E.g., Misclassification error (**P**) for diagnoses' classification (**T**) improves (i.e., become lower) after additional iterations of the training procedure (**E**) on the same data-set.
 
 
 
@@ -228,7 +228,7 @@ Learning involves the algorithm comparing its current actual inferred output wit
 
 Input data is .orange[labeled] based on existing knowledge
 
-The model continues to train until it achieves a desired .orange[level of performance] on the training dataset.
+The model continues to train until it achieves a desired .orange[level of performance] on the training data-set.
 
 
 
@@ -236,7 +236,7 @@ The model continues to train until it achieves a desired .orange[level of perfor
 
 &gt; The input data is _not labeled_ and thus the ML is not told the right answer (there are not right answers!)
 
-The ML is given the input data and is left to learn optimal .orange[patterns], .orange[regularities], or .orange[clusterings] among them.
+The ML is given the input data and is left to learn optimal .orange[patterns], .orange[regularities], or .orange[clustering] among them.
 
 
 
@@ -357,7 +357,7 @@ If weak classifiers are applicable to `\(k&gt;2\)` classes, so it is ensemble.
 
 Sample data acts as proxy for underlying data source
 
-.orange[_Overfitting_] means adapting too closely to the idiosyncrasies of a sample set
+.orange[_Over-fitting_] means adapting too closely to the idiosyncrasies of a sample set
 
 **Result**: Small error on training data but .orange[poor predictive performance]!
 
@@ -391,7 +391,7 @@ class: center, middle, hide-count
 ---
 # .orange[Bias and Variance trade-off]
 
-In order to minimise test error on new data points we need to
+In order to minimize test error on new data points we need to
 &gt; **select a function** that achieves .orange[*low variance*] and .orange[*low bias*].
 
 
@@ -429,8 +429,8 @@ MLT                 |parameters             | Hyper-parameters|
 --------------------|-----------------------|-----------------
 Decision tree       | Splits' locations     | # splits
 Random forest       | Splits' locations     | # splits&lt;br&gt;# trees&lt;br&gt;# dimension (randomly selected)
-SVM                 | Hyperplane's position | type of nonlinearity&lt;br&gt;margin&lt;br&gt;overlap
-Logistic regression | `\(\beta\)`s              | polinomial degrees&lt;br&gt;# nodes for splines&lt;br&gt;interactions
+SVM                 | Hyper-plane's position | type of nonlinearity&lt;br&gt;margin&lt;br&gt;overlap
+Logistic regression | `\(\beta\)`s              | polynomial degrees&lt;br&gt;# nodes for splines&lt;br&gt;interactions
 ANN                 | weights               | # layers&lt;br&gt;# neurons/layer&lt;br&gt;# training's epochs&lt;br&gt;batch size&lt;br&gt;learning rate
 
 
