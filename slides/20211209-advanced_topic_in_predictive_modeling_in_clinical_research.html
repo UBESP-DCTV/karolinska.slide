@@ -129,7 +129,7 @@ Machine Learning deals with the study, the design and the development of algorit
 
 
 .left-code[
-In machine learning, we provide the .orange[input] (data), the desired result and out comes the .orange[learning] algorithm 
+In machine learning, we provide the .orange[input] (data), the desired result and out come the .orange[learning] algorithm 
 
 &lt;br&gt;
 &lt;br&gt;
@@ -151,15 +151,13 @@ Mathematically, Machine Learning problems are simply .orange[*optimisation*] pro
 
 A computer program is said to learn from .orange[experience] (**E**) with respect to some class of .orange[tasks] (**T**) and .orange[performance measure] (**P**), if its .green[performance] at the given .green[task] improves with .green[experience].
 
-One useful perspective on machine learning is that it involves searching a very large space of possible hypotheses to .orange[determine one that best fits the observed data and any prior knowledge held by the learner]
-
 .right[_Machine Learning_ - Tom Mitchell, 1997]
 
 &lt;br&gt;
 
 &gt; Learning: performance on **T** as measured by **P** improves with **E**.
 
-&lt;br&gt;&lt;small&gt;
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;small&gt;
 
 E.g., Misclassification error (**P**) for diagnoses' classification (**T**) improves (i.e., become lower) after training on additional data (**E**).
 
@@ -190,9 +188,6 @@ that **best predict** outputs (responses), given data inputs (predictors)
 
 &gt; A .orange[_learner_] uses data and experience to perform better over time
 
-
-
-&gt; It is an **optimization** problem
 
 
 ---
@@ -258,32 +253,6 @@ $$
 
 ]
 
-
----
-
-# .orange[Quantifying errors]
-
-**Loss function** (for .orange[K] classes):
-
-`$$\rm loss: \{1, \ldots K\}\times \{1, \ldots K\} \to [0, \infty)$$`
-
-&lt;br&gt;
-
-Usage:
-
-`$${\rm loss} \left(f(x), {\rm true\ class\ of\ }x\right)$$`
-
-&lt;br&gt;
-&lt;br&gt;
-
-&gt; **IF** all mistakes are equally bad:
-`$$\textrm {loss}(i, j) = \begin{cases}
-1 &amp; \textrm {if } i\neq j  \cr
-0 &amp; \textrm {if } i= j  \cr
-\end{cases}$$`
-
-
-
 ---
 # .orange[Ensemble classifiers]
 
@@ -294,20 +263,17 @@ __Weak classifier__
 
   &gt; weak classifier: .orange[error rate slightly below 50%]
 
-If weak classifiers are applicable to `\(k&gt;2\)` classes, so it is ensemble.
-
 
 __Ensemble Classifier__
   - trains .orange[many _weak_] classifiers
+  
   - .orange[combines results] by majority vote
 
-__Error rate__
-  - proportion of miclassified points
-  - expected number of error
+If weak classifiers are applicable to `\(k&gt;2\)` classes, so it is ensemble.
 
 
 
-&lt;br&gt;
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
 
 **Important examples: .orange[Random Forests]**
 
@@ -406,7 +372,8 @@ class: center, middle, hide-count
 ---
 # .orange[Bias and Variance trade-off]
 
-In order to minimise test error on new data points, statistical theory (out of the scope of this workshop) tells us that we need to **select a function** that achieves .orange[*low variance*] and .orange[*low bias*].
+In order to minimise test error on new data points we need to
+&gt; **select a function** that achieves .orange[*low variance*] and .orange[*low bias*].
 
 
  - .orange[**Variance**] refers to the amount by which our predictions would **change if we estimated using a different training set**. 
@@ -433,16 +400,6 @@ Good, generalizable predictors need to have .orange[both low bias and low varian
 
 
 
----
-
-# .orange[K-fold cross validation]
-
-&lt;img src="img/splits.png" width="100%" style="display: block; margin: auto;" /&gt;
-
-Generally, .orange[k between 5 and 10] avoids over-training the model (variance), whilst avoiding too few training points (bias)
-
-
-
 
 ---
 
@@ -459,6 +416,24 @@ ANN                 | weights               | # layers&lt;br&gt;# neurons/layer&
 
 
 ---
+
+# .orange[K-fold cross validation]
+
+&lt;img src="img/splits.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+Generally, .orange[k between 5 and 10] avoids over-training the model (variance), whilst avoiding too few training points (bias)
+
+
+---
+#.orange[Cross validation variability]
+
+
+
+&lt;img src="img/overfitting.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
 # .orange[Suggestions]
 
 ### Validate (and fine-tune) your Model
@@ -470,10 +445,10 @@ Separate your data into .orange[training], .orange[validation], and .orange[test
 
 For event that only happens 1% of the time,  you can easily report an accuracy of 99%: meaningless.
 
-Before starting a project, better figure out which precision and recall application requires to be useful
+Before starting a (classification) project, better figure out which precision and recall application (or _metrics_) requires to be useful
 
 &gt; - .orange[Build the model with these metrics on your mind]
-&gt; - .orange[Use balanced metrics]
+&gt; - .orange[When in doubt use balanced metrics]
 
 
 
@@ -508,20 +483,21 @@ I.e., anything more than old new-fashioned (generalized*) logistic regressions
 
 \*generalized := any **non-linear**, **differentiable**, `\(\mathbb{R}^n\to \mathbb{R}\)` function.
 
+
+
+
 ---
 # Fully connected network 
 
-.pull-left[
-&lt;img src="img/fc.png" width="250px"/&gt;
-]
-.pull-right[
-&lt;img src="img/mlp.png" width="400px"/&gt;
-]
-
+&lt;img src="img/mlp.png" width="40%"/&gt;&lt;img src="img/fc.png" width="25%"/&gt;
 --
+&lt;img src="img/descent.gif" width="30%"/&gt;
 
-&lt;img src="img/loss.png" width="65%"/&gt;
-&lt;img src="img/descent.gif" width="34%"/&gt;
+&lt;br&gt;
+
+&lt;img src="img/loss.png" width="100%"/&gt;
+
+
 
 
 ---
@@ -530,11 +506,13 @@ class: inverse, middle, center, hide-count
 # Unstructured data
 
 .left[
-- Image: multi-dimensional single-information
-- Text/Signals: sequential one-dimension priviledged single-information
+- Multi-dimensional single-information (e.g., images)
+- Sequential one-dimension privileged single-information (e.g., text/signals)
 ]
 ---
-# Convolutional networks
+## Multi-dimensional single-information
+
+### Convolutional networks
 
 &lt;img src="img/convExample.png" width="100%" style="display: block; margin: auto;" /&gt;
 
@@ -565,7 +543,9 @@ class: inverse, middle, center, hide-count
 
 
 ---
-# Sequential input/output
+### One-dimension privileged single-information
+
+#### Sequencies (input/output)
 
 &lt;br&gt;
 
@@ -606,10 +586,11 @@ class: inverse, middle, center, hide-count
 ---
 # Take them all
 
+&lt;small&gt;&lt;small&gt;
 
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/multi-dl.jpg" alt="Network from https://www.sciencedirect.com/science/article/pii/S0007091219306361 &amp;lt;br&amp;gt;Bradley A. Fritz, et al. 'Deep-learning model for predicting 30-day postoperative mortality' - BJA 2019" width="100%" /&gt;
-&lt;p class="caption"&gt;Network from https://www.sciencedirect.com/science/article/pii/S0007091219306361 &lt;br&gt;Bradley A. Fritz, et al. 'Deep-learning model for predicting 30-day postoperative mortality' - BJA 2019&lt;/p&gt;
+&lt;img src="img/multi-dl.jpg" alt="&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Network from https://www.sciencedirect.com/science/article/pii/S0007091219306361 &amp;lt;br&amp;gt;Bradley A. Fritz, et al. 'Deep-learning model for predicting 30-day postoperative mortality' - BJA 2019" width="100%" /&gt;
+&lt;p class="caption"&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Network from https://www.sciencedirect.com/science/article/pii/S0007091219306361 &lt;br&gt;Bradley A. Fritz, et al. 'Deep-learning model for predicting 30-day postoperative mortality' - BJA 2019&lt;/p&gt;
 &lt;/div&gt;
 
 

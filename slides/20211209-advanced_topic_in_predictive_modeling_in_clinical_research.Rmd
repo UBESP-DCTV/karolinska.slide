@@ -166,7 +166,7 @@ knitr::include_graphics("img/samuel.png")
 
 
 .left-code[
-In machine learning, we provide the .orange[input] (data), the desired result and out comes the .orange[learning] algorithm 
+In machine learning, we provide the .orange[input] (data), the desired result and out come the .orange[learning] algorithm 
 
 <br>
 <br>
@@ -190,15 +190,13 @@ knitr::include_graphics("img/MLvsTrad.png")
 
 A computer program is said to learn from .orange[experience] (**E**) with respect to some class of .orange[tasks] (**T**) and .orange[performance measure] (**P**), if its .green[performance] at the given .green[task] improves with .green[experience].
 
-One useful perspective on machine learning is that it involves searching a very large space of possible hypotheses to .orange[determine one that best fits the observed data and any prior knowledge held by the learner]
-
 .right[_Machine Learning_ - Tom Mitchell, 1997]
 
 <br>
 
 > Learning: performance on **T** as measured by **P** improves with **E**.
 
-<br><small>
+<br><br><br><br><small>
 
 E.g., Misclassification error (**P**) for diagnoses' classification (**T**) improves (i.e., become lower) after training on additional data (**E**).
 
@@ -231,9 +229,6 @@ knitr::include_graphics("img/ml-process.png")
 
 > A .orange[_learner_] uses data and experience to perform better over time
 
-
-
-> It is an **optimization** problem
 
 
 ---
@@ -301,32 +296,6 @@ knitr::include_graphics("img/classification_3.png")
 
 ]
 
-
----
-
-# .orange[Quantifying errors]
-
-**Loss function** (for .orange[K] classes):
-
-$$\rm loss: \{1, \ldots K\}\times \{1, \ldots K\} \to [0, \infty)$$
-
-<br>
-
-Usage:
-
-$${\rm loss} \left(f(x), {\rm true\ class\ of\ }x\right)$$
-
-<br>
-<br>
-
-> **IF** all mistakes are equally bad:
-$$\textrm {loss}(i, j) = \begin{cases}
-1 & \textrm {if } i\neq j  \cr
-0 & \textrm {if } i= j  \cr
-\end{cases}$$
-
-
-
 ---
 # .orange[Ensemble classifiers]
 
@@ -337,20 +306,17 @@ __Weak classifier__
 
   > weak classifier: .orange[error rate slightly below 50%]
 
-If weak classifiers are applicable to $k>2$ classes, so it is ensemble.
-
 
 __Ensemble Classifier__
   - trains .orange[many _weak_] classifiers
+  
   - .orange[combines results] by majority vote
 
-__Error rate__
-  - proportion of miclassified points
-  - expected number of error
+If weak classifiers are applicable to $k>2$ classes, so it is ensemble.
 
 
 
-<br>
+<br><br><br>
 
 **Important examples: .orange[Random Forests]**
 
@@ -458,7 +424,8 @@ knitr::include_graphics("img/yogi-berra-photo-quote-1.jpg")
 ---
 # .orange[Bias and Variance trade-off]
 
-In order to minimise test error on new data points, statistical theory (out of the scope of this workshop) tells us that we need to **select a function** that achieves .orange[*low variance*] and .orange[*low bias*].
+In order to minimise test error on new data points we need to
+> **select a function** that achieves .orange[*low variance*] and .orange[*low bias*].
 
 
  - .orange[**Variance**] refers to the amount by which our predictions would **change if we estimated using a different training set**. 
@@ -489,18 +456,6 @@ Good, generalizable predictors need to have .orange[both low bias and low varian
 
 
 
----
-
-# .orange[K-fold cross validation]
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%"}
-knitr::include_graphics("img/splits.png")
-```
-
-Generally, .orange[k between 5 and 10] avoids over-training the model (variance), whilst avoiding too few training points (bias)
-
-
-
 
 ---
 
@@ -517,6 +472,28 @@ ANN                 | weights               | # layers<br># neurons/layer<br># t
 
 
 ---
+
+# .orange[K-fold cross validation]
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%"}
+knitr::include_graphics("img/splits.png")
+```
+
+Generally, .orange[k between 5 and 10] avoids over-training the model (variance), whilst avoiding too few training points (bias)
+
+
+---
+#.orange[Cross validation variability]
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%"}
+knitr::include_graphics("img/overfitting.png")
+```
+
+
+
+---
 # .orange[Suggestions]
 
 ### Validate (and fine-tune) your Model
@@ -528,10 +505,10 @@ Separate your data into .orange[training], .orange[validation], and .orange[test
 
 For event that only happens 1% of the time,  you can easily report an accuracy of 99%: meaningless.
 
-Before starting a project, better figure out which precision and recall application requires to be useful
+Before starting a (classification) project, better figure out which precision and recall application (or _metrics_) requires to be useful
 
 > - .orange[Build the model with these metrics on your mind]
-> - .orange[Use balanced metrics]
+> - .orange[When in doubt use balanced metrics]
 
 
 
@@ -570,20 +547,21 @@ knitr::include_graphics("img/neuron.gif")
 
 \*generalized := any **non-linear**, **differentiable**, $\mathbb{R}^n\to \mathbb{R}$ function.
 
+
+
+
 ---
 # Fully connected network 
 
-.pull-left[
-<img src="img/fc.png" width="250px"/>
-]
-.pull-right[
-<img src="img/mlp.png" width="400px"/>
-]
-
+<img src="img/mlp.png" width="40%"/><img src="img/fc.png" width="25%"/>
 --
+<img src="img/descent.gif" width="30%"/>
 
-<img src="img/loss.png" width="65%"/>
-<img src="img/descent.gif" width="34%"/>
+<br>
+
+<img src="img/loss.png" width="100%"/>
+
+
 
 
 ---
@@ -592,11 +570,13 @@ class: inverse, middle, center, hide-count
 # Unstructured data
 
 .left[
-- Image: multi-dimensional single-information
-- Text/Signals: sequential one-dimension priviledged single-information
+- Multi-dimensional single-information (e.g., images)
+- Sequential one-dimension privileged single-information (e.g., text/signals)
 ]
 ---
-# Convolutional networks
+## Multi-dimensional single-information
+
+### Convolutional networks
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%"}
 knitr::include_graphics("img/convExample.png")
@@ -635,7 +615,9 @@ knitr::include_graphics("img/cnn-struct.png")
 
 
 ---
-# Sequential input/output
+### One-dimension privileged single-information
+
+#### Sequencies (input/output)
 
 <br>
 
@@ -680,8 +662,9 @@ $a^{[l]}_{<t>}$ : activation vector at position t on layer l
 ---
 # Take them all
 
+<small><small>
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%", fig.cap="Network from https://www.sciencedirect.com/science/article/pii/S0007091219306361 <br>Bradley A. Fritz, et al. 'Deep-learning model for predicting 30-day postoperative mortality' - BJA 2019"}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%", fig.cap="<br><br><br><br><br>Network from https://www.sciencedirect.com/science/article/pii/S0007091219306361 <br>Bradley A. Fritz, et al. 'Deep-learning model for predicting 30-day postoperative mortality' - BJA 2019"}
 knitr::include_graphics("img/multi-dl.jpg")
 ```
 
