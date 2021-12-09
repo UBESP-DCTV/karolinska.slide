@@ -9,6 +9,10 @@
 The goal of `karolinska.slide` is to collect slides presented within the
 collaboration between UBEP and the Karolinska.
 
+| Date       | Topic                                                           | Presentaion                                                                                                                      |
+|------------|-----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| 2021-12-09 | **Advanced Topics in Predictive Modeling in Clinical Research** | [CL](https://ubesp-dctv.github.io/karolinska.slide/20211209-advanced_topic_in_predictive_modeling_in_clinical_research_files/#1) |
+
 ## Code of Conduct
 
 Please note that the karolinska.slide project is released with a

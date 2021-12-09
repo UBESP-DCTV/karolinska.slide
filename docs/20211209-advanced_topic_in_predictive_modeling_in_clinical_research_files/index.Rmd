@@ -44,6 +44,24 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r meta, echo=FALSE}
+metathis::meta() |> 
+  metathis::meta_general(
+    description = "Advanced Topics in Predictive Modeling in Clinical Research",
+    generator = "xaringan and remark.js"
+  ) |> 
+  metathis::meta_name("github-repo" = "UBESP-DCTV/karolinska.slide") |> 
+  metathis::meta_social(
+    title = "Advanced Topics in Predictive Modeling in Clinical Research",
+    url = "https://ubesp-dctv.github.io/karolinska.slide/20211209-advanced_topic_in_predictive_modeling_in_clinical_research_files/#1",
+    image = "https://github.com/UBESP-DCTV/karolinska.slide/raw/master/docs/20211209-advanced_topic_in_predictive_modeling_in_clinical_research_files/img/Orsetto-lavatore.jpg",
+    og_type = "website",
+    og_author = "UBEP",
+    twitter_card_type = "summary",
+    twitter_creator = "@CorradoLanera"
+  )
+```
+
 ```{css, echo=FALSE}
 .left-code {
   color: #777;
