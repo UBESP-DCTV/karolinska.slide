@@ -13,9 +13,7 @@ output:
     css: xaringan-themer.css
 ---
 name: title
-class: center, middle, reduced_opacity
-background-image: url("")
-background-size: cover
+class: center, middle, hide-count
 
 # Advanced Topics<br>in Predictive Modeling<br>in Clinical Research
 
@@ -23,7 +21,7 @@ background-size: cover
 knitr::include_graphics("img/Orsetto-lavatore.jpg")
 ```
 
-### 20 minutes from Machine- to Deep- Learning
+### 25 minutes from Machine- to Deep- Learning
 
 .large[
   Corrado Lanera | Unit of Biostatistics Epidemiology and Public Health | 2021/12/09
@@ -68,7 +66,9 @@ knitr::opts_chunk$set(
   width: 60%;
   float: right;
 }
-
+.hide-count .remark-slide-number {
+  display: none;
+}
 ```
 
 
@@ -94,23 +94,9 @@ style_duo_accent(
 )
 ```
 
-```{r xaringanExtra, include=FALSE}
-xaringanExtra::use_xaringan_extra(c(
-  # "tileview",
-  # "animate_css",
-  # "tachyons",
-  # "editable",
-  # "panelset",
-  # "webcam",
-  # "clipboard",
-  # "freezeframe",
-  # "share_again"
-))
-```
-
 ---
 name: whoami
-class: inverse, bottom, right
+class: inverse, bottom, right, hide-count
 
 ```{r, echo=FALSE, out.width = "50%"}
 knitr::include_graphics("img/profilo_CL.jpg")
@@ -131,16 +117,6 @@ knitr::include_graphics("img/profilo_CL.jpg")
 **@UBESP-DCTV**
 
 
----
-class: center, bottom, hide-count
-
-# 
-```{r, echo=FALSE, out.width = "40%"}
-knitr::include_graphics(c("img/thankyou-robot.jpg"))
-```
-
-
-### Special thanks to professor .blu_gray[Paola Berchialla] for having provided me with much of the idea and material I have included in this presentation.
 
 
 
@@ -157,24 +133,24 @@ class: inverse, middle, center
 
 - Deep Learning
 
-- Bayesian Neural Networks... (by .pink[__Danila.Azzolina__]@unife.it, Ph.D.)
+- Bayesian Networks (by .pink[__Danila.Azzolina__]@unife.it, Ph.D.)
 ]
 
 
 ---
 name: intro-what
-class: inverse, middle, center
+class: inverse, middle, center, hide-count
 
 # Overview
 
 ---
 
-# .orange[What is Machine Learning]
+# .orange[What is **Machine** Learning]
 
 
 Machine Learning deals with the study, the design and the development of algorithms that give computers the capability to learn without being explicitly programmed
 
-.right[Samuel, 1959]
+.right[Artur Samuel, 1959]
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', out.width="70%"}
 knitr::include_graphics("img/samuel.png")
@@ -182,52 +158,10 @@ knitr::include_graphics("img/samuel.png")
 
 
 
-
----
-
-# .orange[What is Machine Learning]
-
-
-A computer program is said to learn from .orange[experience] with respect to some class of .orange[tasks] and .orange[performance measure], if its .green[performance] at the given .green[task] improves with .green[experience].
-
-One useful perspective on machine learning is that it involves searching a very large space of possible hypotheses to .orange[determine one that best fits the observed data and any prior knowledge held by the learner]
-
-.right[_Machine Learning_ - Mitchell, 1997]
-
-
-
----
-
-# .orange[How do Machines learn?]
-
-
-A learning algorithm is an algorithm that is able to .orange[learn from data].
-
-
-Machine learning is concerned with finding functions 
-
-$$Y = f(X) + \epsilon$$ 
-
-that best **predict** outputs (responses), given data inputs (predictors)
-
-
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', out.width="60%"}
-knitr::include_graphics("img/ml-process.png")
-```
-
-.orange[_Learners_] are algorithms that improve their skills by learning from old/known .orange[__(training)__] data.
-
-
-> A .orange[_learner_] uses data and experience to perform better over time
-
-
-
-
 ---
 
 
-# .orange[How do Machines learn?]
+# .orange[How do **Machines** learn?]
 
 
 
@@ -249,10 +183,62 @@ knitr::include_graphics("img/MLvsTrad.png")
 
 
 
+---
+
+# .orange[What is Machine **Learning**]
+
+
+A computer program is said to learn from .orange[experience] (**E**) with respect to some class of .orange[tasks] (**T**) and .orange[performance measure] (**P**), if its .green[performance] at the given .green[task] improves with .green[experience].
+
+One useful perspective on machine learning is that it involves searching a very large space of possible hypotheses to .orange[determine one that best fits the observed data and any prior knowledge held by the learner]
+
+.right[_Machine Learning_ - Tom Mitchell, 1997]
+
+<br>
+
+> Learning: performance on **T** as measured by **P** improves with **E**.
+
+<br><small>
+
+E.g., Misclassification error (**P**) for diagnoses' classification (**T**) improves (i.e., become lower) after training on additional data (**E**).
+
+E.g., Misclassification error (**P**) for diagnoses' classification (**T**) improves (i.e., become lower) after additional iterations of the training procedure (**E**) on the same dataset.
+
+
+
+---
+
+# .orange[How do Machines **learn**?]
+
+
+A learning algorithm is an algorithm that is able to .orange[learn from data].
+
+
+Machine learning is concerned with finding functions 
+
+$$Y = f(X) + \epsilon$$ 
+
+that **best predict** outputs (responses), given data inputs (predictors)
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', out.width="60%"}
+knitr::include_graphics("img/ml-process.png")
+```
+
+.orange[_Learners_] are algorithms that improve their skills by learning from old/known .orange[__(training)__] data.
+
+
+> A .orange[_learner_] uses data and experience to perform better over time
+
+
+
+> It is an **optimization** problem
+
 
 ---
 name: intro-what
-class: inverse, middle, center
+class: inverse, middle, center, hide-count
 
 # Machine Learning
 
@@ -260,63 +246,9 @@ class: inverse, middle, center
 
 
 ---
-# .orange[Learning problem] 
+## .orange[Supervised learning]
 
-A computer program is said to **learn**
-
- - from .orange[experience] **E**
-
- - with respect to some .orange[task] **T**
-
- - and some .orange[performance measure] **P**
-
-
-
-if its performance on **T**, as measured by **E**, improves with experience **E**.
-
----
-# .orange[Task]
-
-A __task__ is something the ML must carry out
-
-  - the process of **learning itself is not the task**
-
-  - _Learning_ is the mean of attaining the ability to perform the task
-
-# .orange[Experience]
-
-A __task__ is defined in terms of _how the ML should process a collection of Examples_. I.e., how the machine _processes_/_elaborates_ the __experience__
-
-  - a training dataset _is_ the main (direct) __experience__
-
-  - a validation dataset _is_ (indirect) __experience__! (subdole point...)
-
-  - a test dataset _is not_ __experience__ 
-  
-  
----
-## .orange[Performance]
-
-A __performance__ is a quantitative measure for assessing the ability of ML
-  - performance is measured on the task being carried out
-
-Usually __performance__ is measured in terms of:
-  - .orange[_accuracy_]: proportion of examples for which the model produces the correct output.
-  - .orange[_error rate_]: proportion of examples for which the model produces the incorrect output.
-
---
-
-## .orange[.center[**WARNING**<br>Unbalanced outcomes require balanced metrics!]]
-
-
-
-
----
-# .orange[Supervised learning]
-
-> The algorithm experiences a dataset containing features, and each example is associated with _**a label**_ (target).
-
-The learning algorithm is provided with a set of inputs along with the corresponding .orange[correct] outputs.
+> The learning algorithm is provided with a set of inputs along with the corresponding .orange[correct] outputs.
 
 Learning involves the algorithm comparing its current actual inferred output with the correct one, so that to learn from its .orange[errors] (to minimize it).
 
@@ -327,15 +259,11 @@ The model continues to train until it achieves a desired .orange[level of perfor
 
 
 
-
----
-# .orange[Unsupervised learning]
+## .orange[Unsupervised learning]
 
 > The input data is _not labeled_ and thus the ML is not told the right answer (there are not right answers!)
 
-It is not trained on pairs consisting of an input ( $X$ ) and the desired output ( $y$ ). 
-
-The ML is given the input data and is left to find interesting .orange[patterns], .orange[regularities], or .orange[clusterings] among them.
+The ML is given the input data and is left to learn optimal .orange[patterns], .orange[regularities], or .orange[clusterings] among them.
 
 
 
@@ -386,16 +314,16 @@ $$\rm loss: \{1, \ldots K\}\times \{1, \ldots K\} \to [0, \infty)$$
 
 Usage:
 
-$${\rm loss} (f(x), {\rm true\ class\ of\ }x)$$
+$${\rm loss} \left(f(x), {\rm true\ class\ of\ }x\right)$$
 
 <br>
 <br>
 
 > **IF** all mistakes are equally bad:
-$$\textrm {loss}(i, j) = \begin{array}{ll}
+$$\textrm {loss}(i, j) = \begin{cases}
 1 & \textrm {if } i\neq j  \cr
 0 & \textrm {if } i= j  \cr
-\end{array}$$
+\end{cases}$$
 
 
 
@@ -494,8 +422,6 @@ Sample data acts as proxy for underlying data source
 
 **Result**: Small error on training data but .orange[poor predictive performance]!
 
---
-
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="90%"}
 knitr::include_graphics("img/overfit.jpg")
 ```
@@ -519,7 +445,7 @@ knitr::include_graphics("img/figure3.png")
 
 ---
 name: berra
-class: center, middle
+class: center, middle, hide-count
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', out.width="100%"}
 knitr::include_graphics("img/yogi-berra-photo-quote-1.jpg")
@@ -549,8 +475,6 @@ knitr::include_graphics("img/tradeoff.png")
 
 
 ---
-class: hide-count
-
 #.orange[Bias variance trade-off]
 
 
@@ -582,11 +506,14 @@ Generally, .orange[k between 5 and 10] avoids over-training the model (variance)
 
 #.orange[(Hyper-)parameters]
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%"}
-knitr::include_graphics("img/overfitting_5.png")
-```
-
-
+ 
+MLT                 |parameters             | Hyper-parameters|
+--------------------|-----------------------|-----------------
+Decision tree       | Splits' locations     | # splits
+Random forest       | Splits' locations     | # splits<br># trees<br># dimension (randomly selected)
+SVM                 | Hyperplane's position | type of nonlinearity<br>margin<br>overlap
+Logistic regression | $\beta$s              | polinomial degrees<br># nodes for splines<br>interactions
+ANN                 | weights               | # layers<br># neurons/layer<br># training's epochs<br>batch size<br>learning rate
 
 
 ---
@@ -599,7 +526,7 @@ Separate your data into .orange[training], .orange[validation], and .orange[test
 
 ### Do not be fooled by Accuracy
 
-For event that only happens 1% of the time,  you can report (w/ random guess!) an accuracy of 99%: meaningless!
+For event that only happens 1% of the time,  you can easily report an accuracy of 99%: meaningless.
 
 Before starting a project, better figure out which precision and recall application requires to be useful
 
@@ -608,47 +535,118 @@ Before starting a project, better figure out which precision and recall applicat
 
 
 
+---
+class: inverse, middle, center, hide-count
+
+# Can we go _deeper_?
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%"}
+knitr::include_graphics("img/perplesso.jpg")
+```
+
 
 
 
 ---
 name: intro-what
-class: inverse, middle, center
+class: inverse, middle, center, hide-count
 
 # Deep Learning
 
 ---
 # Neuron
 
-I.e., old new-fashioned (generalized*) logistic regression
+I.e., anything more than old new-fashioned (generalized*) logistic regressions
 
+<br>
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%"}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="70%"}
 knitr::include_graphics("img/neuron.gif")
 ```
 
+<br>
+<br>
 <br>
 
 \*generalized := any **non-linear**, **differentiable**, $\mathbb{R}^n\to \mathbb{R}$ function.
 
 ---
-# Fully connected network
+# Fully connected network 
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="70%"}
-knitr::include_graphics("img/fc.png")
-```
+.pull-left[
+<img src="img/fc.png" width="250px"/>
+]
+.pull-right[
+<img src="img/mlp.png" width="400px"/>
+]
+
+--
+
+<img src="img/loss.png" width="65%"/>
+<img src="img/descent.gif" width="34%"/>
 
 
 ---
-# Convolutional network
+class: inverse, middle, center, hide-count
+
+# Unstructured data
+
+.left[
+- Image: multi-dimensional single-information
+- Text/Signals: sequential one-dimension priviledged single-information
+]
+---
+# Convolutional networks
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%"}
-knitr::include_graphics("img/convolution.png")
+knitr::include_graphics("img/convExample.png")
 ```
 
 
 ---
-# Recurrent network
+# Convolutional networks
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%"}
+knitr::include_graphics("img/conv.jpg")
+```
+
+
+---
+# Convolutional networks
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%"}
+knitr::include_graphics("img/multi-cnn.png")
+```
+
+
+
+
+
+---
+# Convolutional networks
+
+<br><br>
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%"}
+knitr::include_graphics("img/cnn-struct.png")
+```
+
+
+---
+# Sequential input/output
+
+<br>
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%"}
+knitr::include_graphics("img/sequences.png")
+```
+
+
+
+---
+# Recurrent networks
 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%"}
@@ -689,28 +687,19 @@ knitr::include_graphics("img/multi-dl.jpg")
 
 
 
----
-
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width="100%"}
-knitr::include_graphics("img/sequences.png")
-```
-
 
 
 ---
-name: intro-what
-class: inverse, middle, center
+class: inverse, middle, center, hide-count
 
-# Bayesian Neural Networks
+# Bayesian Networks
 ## by .pink[__Danila.Azzolina__]@unife.it, Ph.D.
 
 
 
 
 ---
-name: intro-next
-class: inverse, middle, center
+class: inverse, middle, center, hide-count
 
 
 ```{r, echo=FALSE, out.width = "50%"}
